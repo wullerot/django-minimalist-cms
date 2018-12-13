@@ -1,6 +1,6 @@
 # django-mini-cms
 
-The minimalist cms, with four plugable base core modules. That are
+The minimalist cms, with four plugable core modules. That are
 
 - A toolbar for your frontend, allows login/logout, and model editing directly in the frontend
 - A dynamic content framework, for hierarchical content on any model, always based on the same content types
