@@ -53,7 +53,6 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
-<<<<<<< HEAD
 *,cover
 .hypothesis/
 
