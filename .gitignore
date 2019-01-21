@@ -17,7 +17,7 @@ test_app_media
 env/
 build/
 develop-eggs/
-dist/
+/dist/
 downloads/
 eggs/
 .eggs/
