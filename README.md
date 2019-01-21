@@ -12,7 +12,7 @@ All three are optional, whereas the toolbar is probably needed in most cases. Th
 
 ## Installation
 
-To get the latest stable release from PyPi
+To get the latest stable release from PyPi (not yet!)
 
     pip install django-minimalist-cms
 
