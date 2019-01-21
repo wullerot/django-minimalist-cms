@@ -1,0 +1,8 @@
+
+==== 0.0.1 (soon) ===
+
+- first release version
+- only toolbar available
+- define toolbar menu, load (admin) views in iframe
+- log in/out
+- edit mode, with in content "edit" buttons

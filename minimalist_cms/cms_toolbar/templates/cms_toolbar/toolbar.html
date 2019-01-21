@@ -1,0 +1,83 @@
+{% load static %}
+
+
+{% if not request.user.is_staff and 'edit' in request.GET %}
+    <script>
+    document.location.href = '/admin/login/?next=' + escape(document.location.href);
+    </script>
+{% endif %}
+
+
+{% if request.user.is_staff %}
+
+    <div
+        data-login-url="/admin/login/"
+        data-auth="{% if request.user.is_staff %}true{% endif %}"
+        class="minimalist-cms-toolbar"
+    >
+
+        <div data-id="handle" class="minimalist-cms-toolbar__handle">
+            <!-- toolbar -->
+            <a href="{{ request.path }}?edit{% if request.session.cms_toolbar_edit %}_off{% endif %}" data-id="btn-edit">Edit:&nbsp;{% if request.session.cms_toolbar_edit %}On{% else %}Off{% endif %}</a>
+            <br>
+            <br>
+            {% for item in toolbar_menu %}
+                <a data-id="btn-{{ item.name|slugify }}" data-content="{{ item.name|slugify }}">{{ item.name }}</a>
+                <br>
+                <br>
+            {% endfor %}
+            <a data-id="btn-profile" data-content="profile">User</a>
+            <br>
+            <br>
+            <a data-id="btn-hide-overlay" class="minimalist-cms-toolbar__handle__hide">×</a>
+        </div>
+
+        <div data-id="overlay" class="minimalist-cms-overlay">
+            <!-- content, iframe, whatever -->
+            <div data-id="content" class="minimalist-cms-overlay__content">
+                <!-- menu, profile get in here -->
+
+                {% for main_item in toolbar_menu %}
+                    <div data-id="content-{{ main_item.name|slugify }}" class="minimalist-cms-toolbar__menu">
+                        {% for section_item in main_item.menu %}
+                            <div class="minimalist-cms-menu-section">{{ section_item.name}}</div>
+                            {% for sub_item in section_item.items %}
+                                <a href="{{ sub_item.link }}">{{ sub_item.name }}</a>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+                <div data-id="content-profile" class="minimalist-cms-toolbar__menu">
+                    <div class="minimalist-cms-menu-section">My User</div>
+                    <a href="/admin/password_change/" data-narrow="true">Set new password</a>
+                    <a data-id="btn-logout" href="/admin/logout/" data-narrow="true">Logout</a>
+                </div>
+
+            </div>
+            <div data-id="iframe" class="minimalist-cms-overlay__iframe">
+                <!-- admin views iframes in here -->
+                <iframe frameborder="0"></iframe>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div data-id="overlay-background" class="minimalist-cms-overlay-background">
+        <!-- the darken -->
+    </div>
+
+
+    <link rel="stylesheet" href="{% static 'cms_toolbar/css/toolbar.css' %}">
+
+    <script src="{% static 'cms_toolbar/libs/jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'cms_toolbar/libs/jquery-ui/ui/widget.js' %}"></script>
+    <script src="{% static 'cms_toolbar/js/toolbar.js' %}"></script>
+    <script src="{% static 'cms_toolbar/js/toolbar_edit_item.js' %}"></script>
+    <script src="{% static 'cms_toolbar/js/toolbar_main.js' %}"></script>
+    <script>
+        $.noConflict();
+    </script>
+
+{% endif %}

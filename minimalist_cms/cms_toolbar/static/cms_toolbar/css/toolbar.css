@@ -1,0 +1,141 @@
+/* line 7, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+.minimalist-cms-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 9999999;
+  padding-right: 0px;
+  border-right: 5px solid #447e9b;
+  background-color: white; }
+
+/* line 18, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+.minimalist-cms-toolbar__handle {
+  position: absolute;
+  top: 21%;
+  left: 100%;
+  background-color: white;
+  padding: 20px 22px 19px 22px;
+  border-right: 5px solid #447e9b;
+  border-top: 5px solid #447e9b;
+  border-bottom: 5px solid #447e9b; }
+  /* line 28, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+  .minimalist-cms-toolbar__handle a {
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 23px;
+    color: #447e9b; }
+    /* line 34, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+    .minimalist-cms-toolbar__handle a:hover {
+      color: #036; }
+
+/* line 37, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+a.minimalist-cms-toolbar__handle__hide {
+  display: none;
+  position: absolute;
+  top: -95px;
+  left: 6px;
+  width: 80px;
+  height: 80px;
+  font-weight: normal;
+  font-size: 97px;
+  text-indent: 10px;
+  line-height: 92px;
+  color: white; }
+  /* line 49, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+  a.minimalist-cms-toolbar__handle__hide:hover {
+    color: #ddd; }
+
+/* line 53, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+.minimalist-cms-overlay-background {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); }
+
+/* line 63, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+.minimalist-cms-overlay {
+  position: relative;
+  background: white;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100vh;
+  min-width: 0px;
+  max-width: 0px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s; }
+
+/* line 75, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+.minimalist-cms-overlay_narrow {
+  width: 80vw;
+  min-width: 150px;
+  max-width: 400px; }
+
+/* line 80, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+.minimalist-cms-overlay_wide {
+  min-width: 150px;
+  max-width: 1200px;
+  width: 80vw; }
+
+/* line 86, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+.minimalist-cms-overlay__content {
+  overflow-y: scroll;
+  height: 100%; }
+  /* line 90, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+  .minimalist-cms-overlay__content > div {
+    display: none; }
+
+/* line 93, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+.minimalist-cms-overlay__iframe {
+  height: 100%;
+  width: 100%; }
+  /* line 96, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+  .minimalist-cms-overlay__iframe iframe {
+    height: 100%;
+    width: 100%; }
+
+/* line 101, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+.minimalist-cms-toolbar__menu {
+  padding: 40px; }
+  /* line 103, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+  .minimalist-cms-toolbar__menu a {
+    display: block;
+    color: #447e9b;
+    padding-top: 11px;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px solid #79aec8;
+    padding-bottom: 9px; }
+    /* line 114, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+    .minimalist-cms-toolbar__menu a:hover {
+      color: #036; }
+
+/* line 118, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+.minimalist-cms-menu-section {
+  font-size: 37px;
+  font-weight: bold;
+  border-bottom: 5px solid #79aec8;
+  padding-bottom: 4px;
+  margin-bottom: 20px; }
+
+/* line 127, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+a.minimalist-cms-edit-link {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #447e9b;
+  display: inline-block;
+  border: 5px solid #447e9b;
+  padding: 5px 7px 4px;
+  text-decoration: none; }
+  /* line 136, apps/minimalist_cms/cms_toolbar/static/cms_toolbar/sass/toolbar.sass */
+  a.minimalist-cms-edit-link:hover {
+    color: #036; }
+
+/*# sourceMappingURL=../../../../../../sass */

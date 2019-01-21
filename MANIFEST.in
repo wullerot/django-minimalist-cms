@@ -1,0 +1,6 @@
+include LICENSES
+include README.md
+include PYPI.rst
+global-exclude *.orig *.pyc *.log *.swp
+
+recursive-include minimalist_cms/*
