@@ -19,7 +19,8 @@ def cms_toolbar(context):
     if 'edit' in request.GET:
         request.session['cms_toolbar_edit'] = True
     if 'edit_off' in request.GET:
-        request.session['cms_toolbar_edit'] = False
+        if 'cms_toolbar_edit' in request.session:
+            del(request.session['cms_toolbar_edit'])
     # import toolbar class
 
     (toolbar_module_path, toolbar_cls_name) = conf.CMS_TOOLBAR.rsplit('.', 1)
