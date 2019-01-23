@@ -18,6 +18,7 @@
 
         <div data-id="handle" class="minimalist-cms-toolbar__handle">
             <!-- toolbar -->
+            <!-- {{ request.session.cms_toolbar_edit|pprint }} -->
             <a href="{{ request.path }}?edit{% if request.session.cms_toolbar_edit %}_off{% endif %}" data-id="btn-edit">Edit:&nbsp;{% if request.session.cms_toolbar_edit %}On{% else %}Off{% endif %}</a>
             <br>
             <br>
