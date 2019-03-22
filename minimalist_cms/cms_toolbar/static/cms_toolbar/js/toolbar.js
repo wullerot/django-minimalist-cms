@@ -39,6 +39,8 @@
             this._on(this.$btn_hide_overlay, {'click': this.close_modal});
             this._on(this.$btn_logout, {'click': this.on_logout});
             this._on(this.$content.find('a'), {'click': this.on_content_link});
+            this._on(this.$overlay_background, {'click': this.close_modal});
+            this._on($(window), {'keyup': this.check_esc_close});
 
             // iframe
             this._on(this.$iframe, {'load': this.on_iframe_load});
@@ -117,11 +119,20 @@
             this.$content.hide(0);
         },
 
+        check_esc_close: function(e) {
+            if (e.keyCode == 27) {  // esc
+                this.close_modal();
+            }
+        },
+
         close_modal: function() {
-            this.$overlay_background.fadeOut(100);
-            this.$btn_hide_overlay.hide(0);
-            this.$overlay.removeClass(this.wide_class);
-            this.$overlay.removeClass(this.narrow_class);
+            if (this.$overlay_background.is(':visible')) {
+                this.$overlay_background.fadeOut(100);
+                this.$btn_hide_overlay.hide(0);
+                this.$overlay.removeClass(this.wide_class);
+                this.$overlay.removeClass(this.narrow_class);
+                document.location.reload();
+            }
         },
 
         open_modal: function(narrow) {
