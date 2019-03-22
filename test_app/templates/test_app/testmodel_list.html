@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+{% load cms_toolbar_tags %}
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style type="text/css">
+
+            body {
+
+            }
+
+            .page {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        {% cms_toolbar %}
+
+        <div class="page">
+
+            {% for object in object_list %}
+
+                <h2>{{ object.name }} </h2>
+                {% cms_toolbar_edit_link object %}
+
+            {% endfor %}
+
+        </div>
+
+    </body>
+</html>
