@@ -5,10 +5,14 @@ class CMSToolbar(object):
 
     def get_menu(self, request):
         return [
-            # name in handle
-            {'name': 'Admin', 'menu': [
-                    # menu section title
-                    {'name': 'Admininstration', 'items': [
+            {
+                # name in handle
+                'name': 'Admin',
+                'menu': [
+                    {
+                        # menu section title
+                        'name': 'Admininstration',
+                        'items': [
                             {
                                 # one link in menu
                                 'link': reverse('admin:sites_site_changelist'),
