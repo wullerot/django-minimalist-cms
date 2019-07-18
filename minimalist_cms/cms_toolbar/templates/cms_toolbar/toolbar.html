@@ -1,20 +1,15 @@
 {% load static %}
-
+{% spaceless %}
 
 {% if not request.user.is_staff and 'edit' in request.GET %}
-    <script>
-    document.location.href = '/admin/login/?next=' + escape(document.location.href);
-    </script>
+    {# TODO remove this from html #}
+    <script>document.location.href = '/admin/login/?next=' + escape(document.location.href);</script>
 {% endif %}
 
 
 {% if request.user.is_staff %}
 
-    <div
-        data-login-url="/admin/login/"
-        data-auth="{% if request.user.is_staff %}true{% endif %}"
-        class="minimalist-cms-toolbar"
-    >
+    <div data-login-url="/admin/login/" data-auth="{% if request.user.is_staff %}true{% endif %}" class="minimalist-cms-toolbar">
 
         <div data-id="handle" class="minimalist-cms-toolbar__handle">
             <!-- toolbar -->
@@ -82,3 +77,5 @@
     </script>
 
 {% endif %}
+
+{% endspaceless %}

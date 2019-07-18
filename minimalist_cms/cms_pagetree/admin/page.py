@@ -40,7 +40,7 @@ class PageAdmin(admin.ModelAdmin):
 
     form = PageAdminForm
     list_display = [
-        '__str__',
+        'get_translation_name',
         'get_translation_path',
         'position',
     ]

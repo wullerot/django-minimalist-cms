@@ -11,8 +11,9 @@ class PageManager(models.Manager):
 
     def get_initial_position(self, page):
         # TODO implement
-        position = 1
-        return position
+        if not page.position:
+            return 1
+        return page.position
 
 
 @python_2_unicode_compatible
@@ -60,7 +61,10 @@ class Page(models.Model):
         verbose_name_plural = _('Pages')
 
     def __str__(self):
-        return 'Page {}'.format(self.pk)
+        name = self.get_translation_name()
+        if not name:
+            name = 'Page {}'.format(self.pk)
+        return name
 
     def save(self, **kwargs):
         self.position = Page.objects.get_initial_position(self)
@@ -77,6 +81,12 @@ class Page(models.Model):
             return translation
         except Exception:
             pass
+
+    def get_translation_name(self, language=None):
+        translation = self.get_translation(language)
+        if translation:
+            return translation.name
+    get_translation_name.short_description = _('Name')
 
     def get_translation_path(self, language=None):
         translation = self.get_translation(language)
@@ -157,3 +167,28 @@ class PageTranslation(models.Model):
             if self.page.is_home:
                 return prefix
         return '{}{}/'.format(prefix, self.slug)
+
+    @property
+    def site(self):
+        if self.page:
+            return self.page.site
+
+    @property
+    def parent_page(self):
+        if self.page:
+            return self.page.parent_page
+
+    @property
+    def position(self):
+        if self.page:
+            return self.page.position
+
+    @property
+    def is_home(self):
+        if self.page:
+            return self.page.is_home
+
+    @property
+    def is_deleted(self):
+        if self.page:
+            return self.page.is_deleted
