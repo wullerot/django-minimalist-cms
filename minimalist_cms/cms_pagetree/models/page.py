@@ -6,6 +6,8 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.text import slugify
 from django.utils.translation import get_language, ugettext_lazy as _
 
+from minimalist_cms.cms_content.models.fields import ContainerField
+
 
 class PageManager(models.Manager):
 
@@ -52,6 +54,14 @@ class Page(models.Model):
     )
     is_home = models.BooleanField(
         default=False,
+    )
+
+    container_header = ContainerField(
+        container_name='container_header',
+    )
+
+    container_body = ContainerField(
+        container_name='container_body',
     )
 
     class Meta:
