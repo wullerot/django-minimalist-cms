@@ -15,5 +15,7 @@ class ContainerAdminForm(forms.ModelForm):
 
 
 class ContainerAdmin(admin.ModelAdmin):
-
+    """
+    Container Admin: only for dev and testing
+    """
     form = ContainerAdminForm

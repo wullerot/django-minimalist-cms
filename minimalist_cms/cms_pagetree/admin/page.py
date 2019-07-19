@@ -42,8 +42,9 @@ class PageAdmin(admin.ModelAdmin):
     list_display = [
         'get_translation_name',
         'get_translation_path',
-        'container_header',
+        'get_container_admin_names',
         'position',
+        'level',
     ]
     inlines = [
         PageTranslationInline,

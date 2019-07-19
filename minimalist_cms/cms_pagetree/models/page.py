@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 from django.utils.translation import get_language, ugettext_lazy as _
 
@@ -52,16 +53,20 @@ class Page(models.Model):
         default=0,
         verbose_name=_('Position'),
     )
+    level = models.PositiveIntegerField(
+        default=0,
+        verbose_name=_('Level'),
+    )
     is_home = models.BooleanField(
         default=False,
     )
 
     container_header = ContainerField(
-        container_name='container_header',
+        container_name='page_header',
     )
 
     container_body = ContainerField(
-        container_name='container_body',
+        container_name='page_body',
     )
 
     class Meta:
@@ -78,6 +83,10 @@ class Page(models.Model):
 
     def save(self, **kwargs):
         self.position = Page.objects.get_initial_position(self)
+        if self.parent_page:
+            self.level = self.parent_page.level + 1
+        else:
+            self.level = 0
         super(Page, self).save(**kwargs)
         if self.pk:
             for translation in self.translation_set.all():
@@ -107,6 +116,25 @@ class Page(models.Model):
     def get_parent_page_for_changelist(self):
         return '{}'.format(self.parent_page or '---')
     get_parent_page_for_changelist.short_description = _('Parent')
+
+    def get_container_admin_name(self, field=None):
+        if field:
+            return '<b>{}</b>: {} element(s)'.format(
+                field.name,
+                field.elements.count()
+            )
+        return ''
+
+    def get_container_admin_names(self):
+        names = []
+        if self.container_header:
+            names.append(self.get_container_admin_name(self.container_header))
+        if self.container_body:
+            names.append(self.get_container_admin_name(self.container_body))
+        if names:
+            return mark_safe(', <br>'.join(names))
+        return '0'
+    get_container_admin_names.short_description = _('Content containers')
 
 
 @python_2_unicode_compatible

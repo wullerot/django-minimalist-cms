@@ -31,13 +31,15 @@ class ContainerField(models.ForeignKey):
         """
         Create a new container
         """
-        return Container.objects.create(name=self.name)
+        return Container.objects.create(
+            name=self.name,
+            content_object=model_instance,
+        )
 
     def pre_save(self, model_instance, add):
         """
         Return field's value just before saving.
-        Create a container if we have none
-        or one with a wrong name
+        Create a container if we have none or one with a wrong name
         """
         container = getattr(model_instance, self.name, None)
         container_name = getattr(container, 'name', '')
@@ -47,4 +49,7 @@ class ContainerField(models.ForeignKey):
                 self.name,
                 self._get_new_container(model_instance)
             )
+            container = getattr(model_instance, self.name)
+        if not getattr(container, 'content_object', None) == model_instance:
+            container.content_object = model_instance
         return super(ContainerField, self).pre_save(model_instance, add)

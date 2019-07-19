@@ -15,7 +15,8 @@ class PageDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = {}
         if self.object:
-            context['page'] = self.object
+            context['page'] = self.object.page
+            context['page_translation'] = self.object
         context.update(kwargs)
         return super(PageDetailView, self).get_context_data(**context)
 
